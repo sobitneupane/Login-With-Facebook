@@ -2,10 +2,17 @@
 	<body>
 		<button onclick="logIn()">Login With Facebook</button>
 		<script>
+			var person = {userID: "", name : "", accessToken:"",picture:""};
 			function logIn() {
 				FB.login(function(response) {
-					console.log(response);
-				}, {scope: 'public_profile, email'})
+					if(response.status == "connected"){
+						person.accessToken = response.authResponse.accessToken;
+						person.userID = response.authResponse.userID;
+						FB.api('/me',function(userData) {
+							console.log(userData);
+						});
+					}
+				}, {scope: 'public_profile'})
 			}
 			window.fbAsyncInit = function() {
 			    FB.init({
