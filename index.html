@@ -8,7 +8,7 @@
 					if(response.status == "connected"){
 						person.accessToken = response.authResponse.accessToken;
 						person.userID = response.authResponse.userID;
-						FB.api('/me',function(userData) {
+						FB.api('/me?fields=id,name,first_name,last_name,picture.type(large)',function(userData) {
 							console.log(userData);
 						});
 					}
