@@ -10,7 +10,7 @@
 						person.userID = response.authResponse.userID;
 						FB.api('/me?fields=id,name,picture.type(large)',function(userData) {
 							person.name = userData.name;
-							persion.picture= userData.picture.data.url;
+							person.picture= userData.picture.data.url;
 						});
 					}
 				}, {scope: 'public_profile'})
