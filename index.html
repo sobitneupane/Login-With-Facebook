@@ -8,8 +8,9 @@
 					if(response.status == "connected"){
 						person.accessToken = response.authResponse.accessToken;
 						person.userID = response.authResponse.userID;
-						FB.api('/me?fields=id,name,first_name,last_name,picture.type(large)',function(userData) {
-							console.log(userData);
+						FB.api('/me?fields=id,name,picture.type(large)',function(userData) {
+							person.name = userData.name;
+							persion.picture= userData.picture.data.url;
 						});
 					}
 				}, {scope: 'public_profile'})
@@ -31,5 +32,18 @@
 			     fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 		</script>
+
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<script>
+			function onSignIn(googleUser){
+				var profile=gooleUser.getBasicProfile();
+				console.log('ID: ' +profile.getId());
+				console.log('Namae: '+ profile.getName());
+				console.log('Image URL:'+ profile.gerImageUrl());
+				console.log('Email:'+profile.getEmail());
+			}
+		</script>
+		<meta name="google-signin-client_id" content="20375758303-e26s8vk7jefv8ulvu7p3pireoi1s4uqc.apps.googleusercontent.com">
+		<div class="g-signin2" data-onsucces="onSignIn"></div>
 	</body>
 </html>
