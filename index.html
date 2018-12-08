@@ -37,7 +37,7 @@
 		<script src="https://apis.google.com/js/platform.js" async defer></script>
 		<script>
 			function onSignIn(googleUser){
-				var profile=gooleUser.getBasicProfile();
+				var profile=googleUser.getBasicProfile();
 				console.log('ID: ' +profile.getId());
 				console.log('Namae: '+ profile.getName());
 				console.log('Image URL:'+ profile.gerImageUrl());
